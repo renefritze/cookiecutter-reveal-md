@@ -5,7 +5,7 @@ Based on [work](https://github.com/rrwen/cookiecutter-reveal) by Richard Wen
 Template for [reveal-md](https://github.com/webpro/reveal-md) presentations with Python cookiecutter.
 
 [![Build Status](https://github.com/renefritze/cookiecutter-reveal-md/actions/workflows/build.yml/badge.svg?main)](https://github.com/renefritze/cookiecutter-reveal-md/actions/workflows/build.yml)
-[![GitHub license](https://img.shields.io/github/license/rrwen/cookiecutter-reveal.svg)](https://github.com/rrwen/cookiecutter-reveal/blob/master/LICENSE)
+[![GitHub license](https://img.shields.io/github/license/renefritze/cookiecutter-reveal-md.svg)](https://github.com/renefritze/cookiecutter-reveal-md/blob/main/LICENSE)
 
 ## Install
 
@@ -13,7 +13,7 @@ Template for [reveal-md](https://github.com/webpro/reveal-md) presentations with
 2. Install [cookiecutter](https://pypi.python.org/pypi/cookiecutter) via `pip`
 
 ```
-pip install cookiecutter
+python3 -m pip install cookiecutter
 ```
 
 ## Usage
@@ -27,9 +27,9 @@ pip install cookiecutter
 ```
 cookiecutter gh:renefritze/cookiecutter-reveal-md
 cd <directory_name>
-npm install
-npm run html
-npm run pdf
+make install
+make html
+make pdf
 ```
 
 See [Implementation](#implementation) for more details.
@@ -51,16 +51,16 @@ git init
 git add .
 git commit -a -m "Initial commit"
 git remote add origin https://github.com/<github_user>/<directory_name>.git
-git pull origin master --allow-unrelated-histories
-git push -u origin master
+git pull origin main --allow-unrelated-histories
+git push -u origin main
 ```
 
 ### Implementation
 
 This code creates folders and files for [cookiecutter](https://pypi.python.org/pypi/cookiecutter) templates.
 
-* The main file is [cookiecutter.json](https://github.com/rrwen/cookiecutter-npm/blob/master/cookiecutter.json) which defines the inputs for the command line interface
-* The inputs then replace any values surrounded with `{{}}` inside the folder [{{cookiecutter.directory_name}}](https://github.com/rrwen/cookiecutter-reveal/tree/master/%7B%7Bcookiecutter.directory_name%7D%7D)
+* The main file is [cookiecutter.json](https://github.com/renefritze/cookiecutter-reveal-md/blob/main/cookiecutter.json) which defines the inputs for the command line interface
+* The inputs then replace any values surrounded with `{{}}` inside the folder [{{cookiecutter.directory_name}}](https://github.com/renefritze/cookiecutter-reveal-md/tree/main/%7B%7Bcookiecutter.directory_name%7D%7D)
 
 ```
         cookiecutter              <-- template tool
