@@ -8,9 +8,9 @@
 
 {{cookiecutter.repository_description}}.
 
-[![Build Status](https://travis-ci.org/{{cookiecutter.github_short}}.svg?branch=master)](https://travis-ci.org/{{cookiecutter.github_short}})
-[![GitHub license](https://img.shields.io/github/license/{{cookiecutter.github_short}}.svg)](https://github.com/{{cookiecutter.github_short}}/blob/master/LICENSE)
-[![Twitter](https://img.shields.io/twitter/url/https/github.com/{{cookiecutter.github_short}}.svg?style=social)](https://twitter.com/intent/tweet?text={{cookiecutter.repository_description.replace(' ','%20')}}:%20https%3A%2F%2Fgithub.com%2F{{cookiecutter.github_user}}%2F{{cookiecutter.directory_name}}%20%23revealjs%20%23slides)
+[![Build Status](https://github.com/{{cookiecutter.github_short}}/actions/workflows/build.yml/badge.svg?main)](https://github.com/{{cookiecutter.github_short}}/actions/workflows/build.yml)
+[![GitHub license](https://img.shields.io/github/license/{{cookiecutter.github_short}}.svg)](https://github.com/{{cookiecutter.github_short}}/blob/main/LICENSE)
+
 
 ## Install
 
@@ -21,7 +21,7 @@
 ```
 git clone {{cookiecutter.github_url}}
 cd {{cookiecutter.directory_name}}
-npm install
+make install
 ```
 
 See [Edits](#edits) and [Implementation](#implementation) for more details.
@@ -32,8 +32,8 @@ See [Edits](#edits) and [Implementation](#implementation) for more details.
 2. Generate `slides/{{cookiecutter.file_name}}.pdf` (see `script.pdf` in [package.json](https://github.com/{{cookiecutter.github_short}}/blob/master/package.json))
 
 ```
-npm run html
-npm run pdf
+make html
+make pdf
 ```
 
 ## Developer Notes
@@ -65,3 +65,8 @@ npm | Purpose
           |
   windows-build-tools       <-- Compile decktape on Windows OS
 ```
+
+### Deployment
+
+Pushes to the main branch trigger a Github Action that builds the html slides and deploys the `docs/` directory via the `gh-pages` branch to Github Pages.
+For this to work goto Repository Settings -> Actions -> General -> Workflow permissions and set that to "read and write".
