@@ -14,7 +14,7 @@
   "github_url": "{{'https://github.com/' + cookiecutter.github_user + '/' + cookiecutter.directory_name}}",
   "github_short": "{{cookiecutter.github_user + '/' + cookiecutter.directory_name}}",
   "reveal_static": "docs",
-  "reveal_theme": "white",
+  "reveal_theme": "black",
   "reveal_controls": "true",
   "reveal_slideNumber": "true",
   "reveal_transition": "slide",
