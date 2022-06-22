@@ -4,8 +4,9 @@
   "description": "{{cookiecutter.repository_description}}",
   "main": "",
   "scripts": {
-    "html": "node ./node_modules/reveal-md/bin/reveal-md.js slides/{{cookiecutter.file_name}}.md --static {{cookiecutter.reveal_static}} --template slides/template.html --highlight-theme github",
-    "pdf": "node ./node_modules/decktape/decktape.js -s {{cookiecutter.reveal_pdf_size}} reveal {{cookiecutter.reveal_static}}/index.html slides/{{cookiecutter.file_name}}.pdf --highlight-theme github"
+    "html": "./node_modules/.bin/reveal-md slides/{{cookiecutter.file_name}}.md --css slides/template_extra.css --template slides/template.html --highlight-theme github --static {{cookiecutter.reveal_static}} ",
+    "watch": "./node_modules/.bin/reveal-md slides/{{cookiecutter.file_name}}.md --css slides/template_extra.css --template slides/template.html --highlight-theme github -w",
+    "pdf": "node ./node_modules/decktape/decktape.js -s {{cookiecutter.reveal_pdf_size}} reveal {{cookiecutter.reveal_static}}/index.html slides/{{cookiecutter.file_name}}.pdf --css slides/template_extra.css --template slides/template.html --highlight-theme github"
   },
   "directories": {
     "test": "tests"

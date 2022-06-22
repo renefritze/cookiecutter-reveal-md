@@ -25,3 +25,20 @@ revealOptions:
 {{loop.index}}{{'. ' + section + '\n'}}
 {%- endfor %}
 {{'---\n\n# ' + cookiecutter.sections.replace(',','\n\n---\n\n## ')}}
+
+---
+
+<div class="container">
+
+<div>
+
+## Get the slides
+
+[https://rene.fritze.me/22-esco](https://rene.fritze.me/22-esco)
+
+</div>
+
+<div>
+<img src="qr_self.png" />
+</div>
+</div>
