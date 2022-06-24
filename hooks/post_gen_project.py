@@ -30,11 +30,7 @@ def _git_init():
 
 def _install():
     subprocess.check_output(["make", "install"])
-    subprocess.check_output(
-        [
-            "make",
-        ]
-    )
+    subprocess.check_output(["make"])
 
 
 if __name__ == "__main__":
