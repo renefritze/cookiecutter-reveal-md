@@ -29,4 +29,6 @@ slides/qr_%.png: venv
 
 clean:
 	rm -f qr_*png
-	rm -rf !(static_html/edit/*) static_html/
+	mv static_html/edit .
+	rm -rf static_html/*
+	mv edit static_html/
