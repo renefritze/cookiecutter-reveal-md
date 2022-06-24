@@ -6,26 +6,10 @@ import subprocess
 
 
 def _precommit():
-    def _error(e):
-        print(e.output)
-        log = os.path.expanduser("~/.cache/pre-commit/pre-commit.log")
-        print(open(log, "rt").read())
-        sys.exit(1)
+    from pre_commit import main
 
-    try:
-        subprocess.check_output(["pre-commit", "--help"])
-    except (PermissionError, FileNotFoundError) as e:
-        print(e)
-        # this means "not-installed" for us
-        sys.exit(0)
-    except (subprocess.CalledProcessError) as e:
-        _error(e)
-    try:
-        subprocess.check_output(["pre-commit", "install"])
-        subprocess.check_output(["pre-commit", "run", "-a"])
-    except subprocess.CalledProcessError as e:
-        _error(e)
-
+    main.main(["install"])
+    main.main(["run", "-a"])
 
 def _git_init():
     try:
