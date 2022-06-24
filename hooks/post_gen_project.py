@@ -37,9 +37,15 @@ def _git_init():
     subprocess.check_output(["git", "commit", "-m", "initial commit"])
 
 
+def _install():
+    subprocess.check_output(["make", "install"])
+    subprocess.check_output(["make",]) 
+
+
 if __name__ == "__main__":
     if "{{ cookiecutter.create_git_repository|lower }}" != "yes":
         sys.exit(0)
 
-    if _git_init():
-        _precommit()
+    _git_init()
+    _precommit()
+    _install()
