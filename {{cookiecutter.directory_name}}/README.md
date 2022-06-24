@@ -70,3 +70,7 @@ npm | Purpose
 
 Pushes to the main branch trigger a Github Action that builds the html slides and deploys the `docs/` directory via the `gh-pages` branch to Github Pages.
 For this to work goto Repository Settings -> Actions -> General -> Workflow permissions and set that to "read and write".
+
+### Notes
+
+- [Mermaid](https://mermaid-js.github.io/mermaid/) Support thanks to [plugin by @amra](https://github.com/amra/reveal-md-scripts)

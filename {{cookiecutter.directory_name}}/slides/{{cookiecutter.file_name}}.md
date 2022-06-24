@@ -42,3 +42,18 @@ revealOptions:
 <img src="qr_self.png" />
 </div>
 </div>
+
+---
+
+## Mermaid diagrams
+
+[More info](https://mermaid-js.github.io/mermaid/)
+
+```mermaid
+graph TD;
+   A-->B;
+   A-->C;
+   B-->D;
+   C-->D;
+```
+
