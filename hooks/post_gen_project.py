@@ -6,35 +6,35 @@ import subprocess
 
 
 def _precommit():
-    def _error(e):
-        print(e.output)
-        log = os.path.expanduser("~/.cache/pre-commit/pre-commit.log")
-        print(open(log, "rt").read())
-        sys.exit(1)
+    try:
+        from pre_commit import main
+    except ImportError:
+        print("Please install pre-commit")
+        return
 
-    try:
-        subprocess.check_output(["pre-commit", "--help"])
-    except (PermissionError, FileNotFoundError) as e:
-        print(e)
-        # this means "not-installed" for us
-        sys.exit(0)
-    except (subprocess.CalledProcessError) as e:
-        _error(e)
-    try:
-        subprocess.check_output(["pre-commit", "install"])
-        subprocess.check_output(["pre-commit", "run", "-a"])
-    except subprocess.CalledProcessError as e:
-        _error(e)
+    main.main(["install"])
+    main.main(["run", "-a"])
 
 
 def _git_init():
     try:
         subprocess.check_output(["git", "--version"])
     except (PermissionError, FileNotFoundError, subprocess.CalledProcessError) as e:
+        print("Please install git")
         return False
     subprocess.check_output(["git", "init"])
     subprocess.check_output(["git", "add", "."])
     subprocess.check_output(["git", "commit", "-m", "initial commit"])
+    return True
+
+
+def _install():
+    subprocess.check_output(["make", "install"])
+    subprocess.check_output(
+        [
+            "make",
+        ]
+    )
 
 
 if __name__ == "__main__":
@@ -43,3 +43,4 @@ if __name__ == "__main__":
 
     if _git_init():
         _precommit()
+    _install()
