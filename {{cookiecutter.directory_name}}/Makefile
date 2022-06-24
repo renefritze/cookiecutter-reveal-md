@@ -1,5 +1,5 @@
 
-docs/index.html: slides/{{cookiecutter.file_name}}.md slides/qr_self.png
+static_html/index.html: slides/{{cookiecutter.file_name}}.md slides/qr_self.png
 	npm run html
 
 slides/{{cookiecutter.file_name}}.pdf: slides/{{cookiecutter.file_name}}.md
@@ -8,7 +8,7 @@ slides/{{cookiecutter.file_name}}.pdf: slides/{{cookiecutter.file_name}}.md
 install:
 	npm install
 
-html: docs/index.html
+html: static_html/index.html
 
 pdf: slides/{{cookiecutter.file_name}}.pdf
 
@@ -29,4 +29,4 @@ slides/qr_%.png: venv
 
 clean:
 	rm -f qr_*png
-	rm -rf docs
+	rm -rf !(static_html/edit/*) static_html/

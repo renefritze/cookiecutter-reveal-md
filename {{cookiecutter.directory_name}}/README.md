@@ -68,7 +68,7 @@ npm | Purpose
 
 ### Deployment
 
-Pushes to the main branch trigger a Github Action that builds the html slides and deploys the `docs/` directory via the `gh-pages` branch to Github Pages.
+Pushes to the main branch trigger a Github Action that builds the html slides and deploys the `static_html/` directory via the `gh-pages` branch to Github Pages.
 For this to work goto Repository Settings -> Actions -> General -> Workflow permissions and set that to "read and write".
 
 ### Notes
