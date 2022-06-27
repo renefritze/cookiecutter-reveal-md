@@ -2,7 +2,7 @@
 static_html/index.html: slides/{{cookiecutter.file_name}}.md slides/qr_self.png
 	npm run html
 
-slides/{{cookiecutter.file_name}}.pdf: slides/{{cookiecutter.file_name}}.md
+slides/{{cookiecutter.file_name}}.pdf: static_html/index.html
 	npm run pdf
 
 install:
