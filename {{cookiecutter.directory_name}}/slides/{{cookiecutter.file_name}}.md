@@ -36,7 +36,7 @@ revealOptions:
 
 ## Get the slides
 
-[https://rene.fritze.me/22-esco](https://rene.fritze.me/22-esco)
+[https://rene.fritze.me/cookiecutter-reveal-md/](https://rene.fritze.me/cookiecutter-reveal-md/)
 
 </div>
 

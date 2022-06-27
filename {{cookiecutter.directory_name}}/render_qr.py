@@ -16,5 +16,7 @@ def make_link(url: str, filename: str) -> None:
     img_2.save(filename)
 
 
-make_link("https://workshop.mardi.ovh", "qr_workshop.png")
-make_link("https://rene.fritze.me/22-esco", "qr_self.png")
+make_link(
+    "https://{{cookiecutter.github_user}}.github.io/{{cookiecutter.directory_name}}",
+    "qr_self.png",
+)

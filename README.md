@@ -4,6 +4,8 @@ Based on [work](https://github.com/rrwen/cookiecutter-reveal) by Richard Wen
 
 Template for [reveal-md](https://github.com/webpro/reveal-md) presentations with Python cookiecutter.
 
+[Demo output](https://rene.fritze.me/cookiecutter-reveal-md/)
+
 [![Build Status](https://github.com/renefritze/cookiecutter-reveal-md/actions/workflows/build.yml/badge.svg?main)](https://github.com/renefritze/cookiecutter-reveal-md/actions/workflows/build.yml)
 [![GitHub license](https://img.shields.io/github/license/renefritze/cookiecutter-reveal-md.svg)](https://github.com/renefritze/cookiecutter-reveal-md/blob/main/LICENSE)
 
