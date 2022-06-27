@@ -12,6 +12,9 @@ jobs:
             - uses: actions/setup-node@v3
               with:
                 node-version: '16'
+            - uses: actions/setup-python@v4
+              with:
+                python-version: '3.9'
             - name: Install dependencies
               run: |
                   python -m pip install cookiecutter build
@@ -38,3 +41,5 @@ jobs:
                   cookiecutter -v --no-input -f -o /tmp/cookie_reveal . directory_name=foo3
                   make -C /tmp/cookie_reveal/foo3 install
                   make -C /tmp/cookie_reveal/foo3
+                  make -C /tmp/cookie_reveal/foo3 clean
+                  make -C /tmp/cookie_reveal/foo3 pdf

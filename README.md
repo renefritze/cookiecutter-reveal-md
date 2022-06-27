@@ -21,7 +21,7 @@ python3 -m pip install cookiecutter
 1. Create a template using [cookiecutter](https://pypi.python.org/pypi/cookiecutter)
 2. Change the directory to the folder with the same name as the `directory_name` input
 3. Install dependencies with [npm](https://www.npmjs.com/)
-4. Render HTML slides in the `docs` folder
+4. Render HTML slides in the `static_html` folder
 5. Render PDF slides in the `slides` folder
 
 ```
@@ -77,7 +77,7 @@ File | Description
 **slides/<file_name>.md** | [Markdown](https://daringfireball.net/projects/markdown/) file containing the slide contents
 **template.html** | A [reveal-md](https://www.npmjs.com/package/reveal-md) custom template file for generating slides
 **.gitignore** | A Node [.gitignore](https://git-scm.com/docs/gitignore) automatically generated from github
-**.npmignore** | A file to specify ignoring `docs/*`
+**.npmignore** | A file to specify ignoring `static_html/*`
 **LICENSE** | MIT [license file](https://help.github.com/articles/licensing-a-repository/) automatically created from github
 **.github** | [Github Actions](https://github.com/features/actions) workflows for deploying the page to Github Pages
 **package.json** | The [npm package.json](https://docs.npmjs.com/files/package.json) specifications with [reveal-md](https://www.npmjs.com/package/reveal-md) and [decktape](https://www.npmjs.com/package/decktape) dependencies

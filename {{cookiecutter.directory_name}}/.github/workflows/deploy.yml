@@ -23,7 +23,7 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3.8.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs/
+          publish_dir: ./static/
       - uses: actions/upload-artifact@v3
         with:
           name: pdf-slides

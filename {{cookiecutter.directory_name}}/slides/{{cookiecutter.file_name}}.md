@@ -10,7 +10,9 @@ revealOptions:
 # {{cookiecutter.title}}
 
 <small>{{cookiecutter.author}}</small>
+
 <small>{{cookiecutter.email}}</small>
+
 <small>{{cookiecutter.affiliation}}</small>
 
 <small>{{cookiecutter.date}}</small>
