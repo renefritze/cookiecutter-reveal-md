@@ -10,12 +10,11 @@
     <link rel="stylesheet" href="./dist/reveal.css" />
     <link rel="stylesheet" href="./dist/theme/white.css" id="theme" />
     <link rel="stylesheet" href="./css/highlight/github.css" />
-    <link rel="stylesheet" href="./edit/style.css">
+
     <link rel="stylesheet" href="./_assets/slides/template_extra.css" />
 
     </head>
-
-    <body>
+  <body>
     <div class="reveal">
       <div class="slides"><section  data-markdown><script type="text/template">
 
@@ -27,7 +26,7 @@
 
 <small>Applied Mathematics Münster</small>
 
-<small>June 27, 2022</small>
+<small>July 13, 2022</small>
 
 <small>*International Cookie Conference 2063*</small>
 </script></section><section  data-markdown><script type="text/template">
@@ -93,26 +92,28 @@ graph TD;
         return target;
       }
 
-  // default options to init reveal.js
-  var defaultOptions = {
-    controls: true,
-    progress: true,
-    history: true,
-    center: true,
-    transition: 'default', // none/fade/slide/convex/concave/zoom
-    plugins: [
-      RevealMarkdown,
-      RevealHighlight,
-      RevealZoom,
-      RevealNotes,
-      RevealMath
-    ]
-  };
+          // default options to init reveal.js
+          var defaultOptions = {
+            controls: true,
+            progress: true,
+            history: true,
+            center: true,
+            transition: 'slide', // none/fade/slide/convex/concave/zoom
+            controls: false,
+            slideNumber: false,
+            plugins: [
+              RevealMarkdown,
+              RevealHighlight,
+              RevealZoom,
+              RevealNotes,
+              RevealMath
+            ]
+          };
 
       // options from URL query string
-            var queryOptions = Reveal().getQueryHash() || {};
+          var queryOptions = Reveal().getQueryHash() || {};
 
-            var options = extend(defaultOptions, {"transition":"slide","controls":true,"slideNumber":true}, queryOptions);
+          var options = extend(defaultOptions, {"transition":"slide","controls":true,"slideNumber":true}, queryOptions);
         </script>
 
     <script src="./_assets/lib/mermaid.min.js"></script>
@@ -121,5 +122,5 @@ graph TD;
     <script>
       Reveal.initialize(options);
     </script>
-    </body>
+  </body>
 </html>
