@@ -57,3 +57,8 @@ typings/
 # dotenv environment variables file
 .env
 .vscode/
+
+# generated slides
+static_html
+# python environment
+venv
