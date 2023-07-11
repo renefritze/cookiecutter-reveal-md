@@ -1,7 +1,7 @@
 {
   "author": "René Fritze",
-  "email": "rene.fritze@wwu.de",
-  "affiliation": "Applied Mathematics Münster",
+  "email": "rene.fritze@arup.com",
+  "affiliation": "Core Capabilities Software QA",
   "date": "{% now 'utc', '%B %d, %Y' %}",
   "title": "Eat more Cookies!",
   "description": "International Cookie Conference 2063",
