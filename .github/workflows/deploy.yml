@@ -15,7 +15,7 @@ jobs:
     name: build and upload
     steps:
       # Checkout the source code so we have some files to look at.
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: actions/setup-node@v3
         with:
           node-version: '16'
