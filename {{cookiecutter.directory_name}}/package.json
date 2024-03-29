@@ -6,7 +6,7 @@
   "scripts": {
     "html": "./node_modules/.bin/reveal-md slides/{{cookiecutter.file_name}}.md  --static {{cookiecutter.reveal_static}} ",
     "watch": "./node_modules/.bin/reveal-md slides/{{cookiecutter.file_name}}.md  -w",
-    "pdf": "node ./node_modules/decktape/decktape.js -s {{cookiecutter.reveal_pdf_size}} reveal {{cookiecutter.reveal_static}}/index.html slides/{{cookiecutter.file_name}}.pdf "
+    "pdf": "./node_modules/.bin/reveal-md slides/{{cookiecutter.file_name}}.md  --print-size {{cookiecutter.reveal_pdf_size}} --print slides/{{cookiecutter.file_name}}.pdf "
   },
   "directories": {
     "test": "tests"
@@ -22,7 +22,7 @@
   },
   "homepage": "{{cookiecutter.github_url}}#readme",
   "dependencies": {
-    "reveal-md": "^5.3.3"
+    "reveal-md": "=6.1.0"
   },
   "optionalDependencies": {
     "decktape": "^3.4.1",
