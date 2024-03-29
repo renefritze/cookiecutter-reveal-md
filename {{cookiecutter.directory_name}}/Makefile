@@ -1,3 +1,5 @@
+HOST_PYTHON=python
+SHELL = /bin/bash
 
 static_html/index.html: slides/{{cookiecutter.file_name}}.md slides/qr_self.png
 	npm run html
@@ -35,6 +37,4 @@ slides/qr_%.png: venv
 
 clean:
 	rm -f qr_*png
-	mv static_html/edit .
 	rm -rf static_html/*
-	mv edit static_html/
