@@ -10,7 +10,7 @@ permissions:
 
 jobs:
 
-  deploy:
+  build_docs:
     runs-on: ubuntu-latest
     name: build and upload
     steps:
@@ -18,16 +18,31 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: '16'
+          node-version: '20'
       - run: make install
       - run: make html
       - run: make pdf
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3.8.0
+      - name: Upload html artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./static_html/
-      - uses: actions/upload-artifact@v3
+            path: static_html/
+      - uses: actions/upload-artifact@v4
         with:
           name: pdf-slides
           path: slides/*pdf
+  deploy_docs:
+    runs-on: ubuntu-22.04
+    needs: [build_docs]
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+      pages: write          # to deploy to Pages
+      id-token: write       # to verify the deployment originates from an appropriate source
+    steps:
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4.0.5
+            # feature is still in private alpha
+            #   with:
+            #     preview: ${{ github.ref != 'refs/heads/main' }}

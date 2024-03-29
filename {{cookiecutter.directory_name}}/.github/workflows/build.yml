@@ -1,18 +1,18 @@
 on: pull_request
 
-name: Deploy
+name: Build
 
 jobs:
 
   deploy:
     runs-on: ubuntu-latest
-    name: build and upload
+    name: build
     steps:
       # Checkout the source code so we have some files to look at.
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: '16'
+          node-version: '20'
       - run: make install
       - run: make html
       - run: make pdf
