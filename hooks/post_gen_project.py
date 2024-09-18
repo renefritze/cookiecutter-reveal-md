@@ -24,7 +24,10 @@ def _git_init():
         return False
     subprocess.check_output(["git", "init"])
     subprocess.check_output(["git", "add", "."])
-    subprocess.check_output(["git", "commit", "-m", "initial commit"])
+    try:
+        subprocess.check_output(["git", "commit", "-m", "initial commit"])
+    except subprocess.CalledProcessError:
+        subprocess.run(["git", "commit", "-m", "initial commit", "--no-verify"])
     return True
 
 
