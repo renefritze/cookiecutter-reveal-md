@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -19,26 +19,34 @@
 
     {{#cssPaths}}
     <link rel="stylesheet" href="{{{.}}}" />
-    {{/cssPaths}}
-
-    {{#watch}}
+    {{/cssPaths}} {{#watch}}
 
     <script>
-          document.write(
-            '<script src="http://' +
-            (location.host || 'localhost').split(':')[0] +
-            ':35729/livereload.js?snipver=1"></' +
-            'script>'
-          );
-        </script>
-      {{/watch}}
-    </head>
+      document.write(
+        '<script src="http://' +
+          (location.host || 'localhost').split(':')[0] +
+          ':35729/livereload.js?snipver=1"></' +
+          'script>'
+      );
+    </script>
+    {{/watch}}
+  </head>
   <body>
     <div class="reveal">
-      <div class="slides">{{{slides}}}</div>
+      <div class="slides">
+        <section data-markdown {{{slidifyAttributes}}}>
+          <textarea data-template>
+            {{{markdown}}}
+          </textarea>
+        </section>
+      </div>
     </div>
 
     <script src="{{{base}}}/dist/reveal.js"></script>
+
+    {{#mermaidOptionsStr}}
+    <script src="{{{base}}}/mermaid/dist/mermaid.min.js"></script>
+    {{/mermaidOptionsStr}}
 
     <script src="{{{base}}}/plugin/markdown/markdown.js"></script>
     <script src="{{{base}}}/plugin/highlight/highlight.js"></script>
@@ -59,29 +67,31 @@
         return target;
       }
 
-          // default options to init reveal.js
-          var defaultOptions = {
-            controls: true,
-            progress: true,
-            history: true,
-            center: true,
-            transition: 'slide', // none/fade/slide/convex/concave/zoom
-            controls: false,
-            slideNumber: false,
-            plugins: [
-              RevealMarkdown,
-              RevealHighlight,
-              RevealZoom,
-              RevealNotes,
-              RevealMath
-            ]
-          };
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        slideNumber: true,
+        highlight: {
+          highlightOnLoad: false
+        },
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealNotes,
+          RevealMath
+        ]
+      };
 
       // options from URL query string
-          var queryOptions = Reveal().getQueryHash() || {};
+      var queryOptions = Reveal().getQueryHash() || {};
 
-          var options = extend(defaultOptions, {{{ revealOptionsStr }}}, queryOptions);
-        </script>
+      var options = extend(defaultOptions, {{{revealOptionsStr}}}, queryOptions);
+    </script>
 
     {{#scriptPaths}}
     <script src="{{{.}}}"></script>
@@ -89,6 +99,25 @@
 
     <script>
       Reveal.initialize(options);
+      Reveal.addEventListener('ready', function (event) {
+        const blocks = Reveal.getRevealElement().querySelectorAll('pre code:not(.mermaid)');
+        const hlp = Reveal.getPlugin('highlight');
+        blocks.forEach(hlp.highlightBlock);
+      });
     </script>
+
+    {{#mermaidOptionsStr}}
+    <script>
+      const mermaidOptions = extend({ startOnLoad: false }, {{{mermaidOptionsStr}}});
+      mermaid.startOnLoad = false;
+      mermaid.initialize(mermaidOptions);
+      const cb = function (event) {
+        mermaid.init(mermaidOptions, '.stack.present > .present pre code.mermaid');
+        mermaid.init(mermaidOptions, '.slides > .present:not(.stack) pre code.mermaid');
+      }
+      Reveal.addEventListener('ready', cb);
+      Reveal.addEventListener('slidetransitionend', cb);
+    </script>
+    {{/mermaidOptionsStr}}
   </body>
 </html>
