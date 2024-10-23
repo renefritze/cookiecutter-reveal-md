@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -12,14 +12,85 @@
     <link rel="stylesheet" href="./css/highlight/github.css" />
 
     <link rel="stylesheet" href="./_assets/slides/template_extra.css" />
-
-    </head>
+  </head>
   <body>
     <div class="reveal">
-      <div class="slides"></div>
+      <div class="slides">
+        <section data-markdown data-separator="\r?\n---\r?\n" data-separator-vertical="\r?\n----\r?\n">
+          <textarea data-template>
+            
+
+# Eat more Cookies!
+
+<small>René Fritze</small>
+
+<small>rene.fritze@arup.com</small>
+
+<small>Core Capabilities Software QA</small>
+
+<small>October 23, 2024</small>
+
+<small>*International Cookie Conference 2063*</small>
+
+---
+
+# Outline
+
+1. Introduction
+2. Results
+3. References
+
+---
+
+# Introduction
+
+---
+
+## Results
+
+---
+
+## References
+
+---
+
+<div class="container">
+
+<div>
+
+## Get the slides
+
+[https://rene.fritze.me/cookiecutter-reveal-md/](https://rene.fritze.me/cookiecutter-reveal-md/)
+
+</div>
+
+<div>
+<img src="qr_self.png" />
+</div>
+</div>
+
+---
+
+## Mermaid diagrams
+
+[More info](https://mermaid-js.github.io/mermaid/)
+
+```mermaid
+graph TD;
+   A-->B;
+   A-->C;
+   B-->D;
+   C-->D;
+```
+
+          </textarea>
+        </section>
+      </div>
     </div>
 
     <script src="./dist/reveal.js"></script>
+
+    <script src="./mermaid/dist/mermaid.min.js"></script>
 
     <script src="./plugin/markdown/markdown.js"></script>
     <script src="./plugin/highlight/highlight.js"></script>
@@ -40,35 +111,54 @@
         return target;
       }
 
-          // default options to init reveal.js
-          var defaultOptions = {
-            controls: true,
-            progress: true,
-            history: true,
-            center: true,
-            transition: 'slide', // none/fade/slide/convex/concave/zoom
-            controls: false,
-            slideNumber: false,
-            plugins: [
-              RevealMarkdown,
-              RevealHighlight,
-              RevealZoom,
-              RevealNotes,
-              RevealMath
-            ]
-          };
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        slideNumber: true,
+        highlight: {
+          highlightOnLoad: false
+        },
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealNotes,
+          RevealMath
+        ]
+      };
 
       // options from URL query string
-          var queryOptions = Reveal().getQueryHash() || {};
+      var queryOptions = Reveal().getQueryHash() || {};
 
-          var options = extend(defaultOptions, {"transition":"slide","controls":true,"slideNumber":true,"_":["slides/fritze2024_cookie_reveal_slides.md"],"static":"static_html"}, queryOptions);
-        </script>
+      var options = extend(defaultOptions, {"transition":"slide","controls":true,"slideNumber":true,"_":["slides/fritze2024_cookie_reveal_slides.md"],"static":"static_html"}, queryOptions);
+    </script>
 
     <script src="./_assets/lib/mermaid.min.js"></script>
     <script src="./_assets/lib/reveal-mermaid.js"></script>
 
     <script>
       Reveal.initialize(options);
+      Reveal.addEventListener('ready', function (event) {
+        const blocks = Reveal.getRevealElement().querySelectorAll('pre code:not(.mermaid)');
+        const hlp = Reveal.getPlugin('highlight');
+        blocks.forEach(hlp.highlightBlock);
+      });
+    </script>
+
+    <script>
+      const mermaidOptions = extend({ startOnLoad: false }, {});
+      mermaid.startOnLoad = false;
+      mermaid.initialize(mermaidOptions);
+      const cb = function (event) {
+        mermaid.init(mermaidOptions, '.stack.present > .present pre code.mermaid');
+        mermaid.init(mermaidOptions, '.slides > .present:not(.stack) pre code.mermaid');
+      }
+      Reveal.addEventListener('ready', cb);
+      Reveal.addEventListener('slidetransitionend', cb);
     </script>
   </body>
 </html>
