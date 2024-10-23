@@ -5,8 +5,8 @@
 version: 2
 
 updates:
-    - package-ecosystem: pip
-      directory: /
+    - package-ecosystem: github-actions
+      directory: .github
       schedule:
           interval: weekly
       allow:
@@ -14,19 +14,20 @@ updates:
       commit-message:
           prefix: ':arrow_up:'
       open-pull-requests-limit: 50
+
+    - package-ecosystem: npm
+      directory: "{{cookiecutter.directory_name}}"
+      schedule:
+          interval: weekly
+      allow:
+          - dependency-type: all
+      commit-message:
+          prefix: ':arrow_up:'
+      open-pull-requests-limit: 50
+
 
     - package-ecosystem: github-actions
-      directory: /
-      schedule:
-          interval: weekly
-      allow:
-          - dependency-type: all
-      commit-message:
-          prefix: ':arrow_up:'
-      open-pull-requests-limit: 50
-
-    - package-ecosystem: docker
-      directory: /docker
+      directory: "{{cookiecutter.directory_name}}/.github"
       schedule:
           interval: weekly
       allow:
