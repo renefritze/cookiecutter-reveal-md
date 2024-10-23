@@ -15,8 +15,9 @@
 ## Install
 
 1. Install [npm](https://www.npmjs.com/)
-2. [Clone](https://git-scm.com/docs/git-clone) this repository
-3. Install dependencies with `npm`
+2. Make sure you have `uv` [installed](https://docs.astral.sh/uv/getting-started/installation/)
+3. [Clone](https://git-scm.com/docs/git-clone) this repository
+4. Install dependencies with `npm`
 
 ```
 git clone {{cookiecutter.github_url}}
