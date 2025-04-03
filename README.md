@@ -1,3 +1,7 @@
+# Discontinued
+
+Since reveal.md is no longer being developed, I'm switching to mkslides. [Cookiecutter available](https://github.com/renefritze/cookiecutter-mkslides)
+
 # cookiecutter-reveal
 
 Based on [work](https://github.com/rrwen/cookiecutter-reveal) by Richard Wen
